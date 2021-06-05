@@ -1,0 +1,103 @@
+{% extends 'school/studentbase.html' %} {% load widget_tweaks %} {% comment %}
+sdfsdf {% endcomment %} {% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+  </style>
+
+  <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<!------ date page for attendance by admin(sumit)  ---------->
+
+<div class="container register-form">
+  <h4>search</h4>
+  <hr />
+  <form action="" method="GET">
+    {{filter.form.salary.label}} {{filter.form.salary}} <br />
+    <br />
+    Job Title {{filter.form.title}}
+    <input type="submit" value="search" />
+  </form>
+  <br /><br />
+  <div class="form">
+    <div class="note">
+      <p>Jobs posted by various recruters are posted here</p>
+    </div>
+
+    <div class="container mt-5 border border-secondary pt-3 rounded">
+      <div class="row text-success h6">
+        <div class="col-2">Job Title</div>
+        <div class="col-2">Minimum salary</div>
+        <div class="col-3">job description</div>
+        <div class="col-2">Eligibility</div>
+        <div class="col-2">Email</div>
+        <div class="col-1">action</div>
+      </div>
+      {% for job in jobs %}
+      <div class="row mb-3 bg-light">
+        <div class="col-2">{{job.title}}</div>
+        <div class="col-2">{{job.salary}}</div>
+        <div class="col-3">{{job.description}}</div>
+        <div class="col-2">{{job.education}}</div>
+        <div class="col-2">{{job.email}}</div>
+        <div class="col-1">
+          {% if job.id in jr %}
+          <a
+            href="{% url 'make_a_request' job.id %}"
+            class="btn btn-sm btn-warning disabled"
+            >requested</a
+          >
+          {% else %}
+          <a
+            href="{% url 'make_a_request' job.id %}"
+            class="btn btn-sm btn-warning"
+            >request</a
+          >
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

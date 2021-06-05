@@ -1,0 +1,7 @@
+asgiref==3.3.4
+Django==3.2.4
+django-filter==2.4.0
+django-widget-tweaks==1.4.8
+Pillow==8.2.0
+pytz==2021.1
+sqlparse==0.4.1

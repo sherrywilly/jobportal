@@ -1,0 +1,39 @@
+{% extends 'school/teacherbase.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+
+</head>
+
+  {% for message in messages %}
+  <div class="alert alert-success">{{message}}</div>
+  {% endfor %}
+ <div class="container">
+   <form action="" method="POST">
+     {% csrf_token %}
+     <label for="message">Message</label>
+     <textarea class="form-control" name="message" required id="message" cols="30" rows="10" placeholder="write your message here"></textarea>
+     <input type="submit" class="btn btn-primary m-3" value="Sent Mail to {{name}}">
+   </form>
+ </div>
+{% endblock content %}

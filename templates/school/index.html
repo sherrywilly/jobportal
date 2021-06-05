@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <style media="screen">
+    .container-fluid {
+font-family: 'Lato', sans-serif;
+      height:90vh;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-image: url('{% static "images/background.jpg" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .container-fluid h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+
+
+
+    .glow {
+      font-size: 70px;
+      color: #ffffff;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fffff, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #fffff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  {% include "school/navbar.html" %}
+  <br>
+  <br>
+  <div class="container-fluid p-0" style="margin-bottom: 0px;margin-top: 0px;">
+    <br>
+    <div class="d-flex justify-content-end">
+    <h1 class=" border border-secondary display-4 glow text-right p-5 rounded" style="background:rgba(12,12,12,0.5)">Get hired <br> by the <br> popular teams</h1>
+      </div>
+    <br><br>
+    <p></p>
+    <br><br><br><br><br>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/studentsignup" role="button"></a>
+    </p>
+
+  </div>
+
+
+
+
+
+
+
+</body>
+
+</html>

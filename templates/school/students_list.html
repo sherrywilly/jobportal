@@ -1,0 +1,128 @@
+{% extends 'school/teacherbase.html' %} {% block content %}
+
+<head>
+  <link
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    id="bootstrap-css"
+    rel="stylesheet"
+  />
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"
+  ></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<div class="container m-3">
+  <h4>search</h4>
+  <form action="" class="" method="GET">
+    {% csrf_token %} {{filter.form.education.label}} {{filter.form.education}}
+    <br /><br />
+    {{filter.form.college_aggregate.label}} {{filter.form.college_aggregate}}
+    <br /><br />
+    School aggregate greater than {{filter.form.school_aggregate}}
+    <br /><br />
+    HSC aggregate greater than {{filter.form.hsc_aggregate}}
+    <br /><br />
+
+    <input type="submit" value="Search" />
+  </form>
+</div>
+{% for message in messages %}
+<div class="alert alert-success">{{message}}</div>
+{% endfor %} {% if students %}
+<div class="container-fluid">
+  <div class="row m-0 text-success h4 mb-1 bg-dark">
+    <div class="col-3">Student Name</div>
+    <div class="col-3">Email</div>
+    <div class="col-3">Education</div>
+
+    <div class="col-3">Action</div>
+  </div>
+  {% for student in students %}
+  <div class="row m-0 mb-2">
+    <div class="col-3">
+      {{student.user.first_name }} {{student.user.last_name}}
+    </div>
+    <div class="col-3">{{student.user.email}}</div>
+    <div class="col-3">{{student.education}}</div>
+    <div class="col-3">
+      <a class="btn btn-primary" href="{% url 'sent_mail' student.id %}"
+        >Sent Mail</a
+      >
+      <button
+        aria-controls="collapseExample"
+        aria-expanded="false"
+        class="btn btn-primary"
+        data-target="#e{{student.id}}"
+        data-toggle="collapse"
+        type="button"
+      >
+        more details
+      </button>
+    </div>
+  </div>
+
+  <div class="collapse" id="e{{student.id}}">
+    <div class="container-fluid">
+      <div class="row m-0 border border-secondary">
+        <div class="col">
+          <span class="text-info">College name : </span
+          >{{student.college}}<br />
+          <span class="text-info">year of passing : </span
+          >{{student.college_year_of_passing}}<br />
+          <span class="text-info">aggregate : </span
+          >{{student.college_aggregate}}<br />
+        </div>
+        <div class="col">
+          <span class="text-info">School name : </span>{{student.school}}<br />
+          <span class="text-info">year of passing : </span
+          >{{student.school_year_of_passing}}<br />
+          <span class="text-info">aggregate : </span
+          >{{student.school_aggregate}}<br />
+        </div>
+        <div class="col">
+          <span class="text-info">HSC name :</span> {{student.hsc}}<br />
+          <span class="text-info">year of passing :</span>
+          {{student.hsc_year_of_passing}}<br />
+          <span class="text-info">aggregate :</span>
+          {{student.hsc_aggregate}}<br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% else %}
+<div class="alert alert-warning">no students as per your search</div>
+{% endif %} {% endblock content %}

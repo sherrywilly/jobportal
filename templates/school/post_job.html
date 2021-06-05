@@ -1,0 +1,64 @@
+{% extends 'school/teacherbase.html' %}
+{% block content %}
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+
+    </style>
+
+</head>
+<div class="container">
+    {% for message in messages %}
+    <div class="alert alert-success">{{message}}</div>
+    {% endfor %}
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h6 class="panel-title">Post a job</h6>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="title">Job Title</label>
+                <input class="form-control" id="title" name="title" required type="text">
+                <label for="salary">Minimum salary</label>
+                <input class="form-control" id="salary" name="salary" required type="number">
+                <label for="education">Eligibility Criteria</label>
+                <select class="form-control" id="" name="education" required>
+                    {% for e in edu_list %}
+                    <option value={{e}}>{{e}}</option>
+
+                    {% endfor %}
+                </select>
+                <label for="description">Job Description</label>
+                <textarea class="form-control" cols="30" id="description" name="description" rows="5"></textarea>
+                <label for="email">Email</label>
+                <input class="form-control" id="email" name="email" required type="email">
+                <br>
+                <input class="btn btn-block" type="submit" value="Post job ">
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

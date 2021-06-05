@@ -1,0 +1,79 @@
+{% extends 'school/teacherbase.html' %} {% load static %} {% block content %}
+
+<head>
+  <style media="screen">
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .w3-panel p {
+      padding-top: 10px;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+</head>
+<br />
+
+{%include 'school/recruter_dashboard_cards.html'%}
+
+<br /><br />
+{% for message in messages %}
+<div class="alert alert-success">{{message}}</div>
+{% endfor %}
+<div class="w3-panel w3-blue">
+  <p>Posted job</p>
+</div>
+<br />
+{% if jobs %}
+<div class="container pl-5">
+  <div class="row text-success h6">
+    <div class="col-2">Job Title</div>
+    <div class="col-1">Minimum salary</div>
+    <div class="col-4">job description</div>
+    <div class="col-2">Eligibility</div>
+    <div class="col-1">Action</div>
+    <div class="col-2">requests</div>
+  </div>
+  {% for job in jobs %}
+  <div class="row mt-1">
+    <div class="col-2">{{job.title}}</div>
+    <div class="col-1">{{job.salary}}</div>
+    <div class="col-4">{{job.description}}</div>
+    <div class="col-2">{{job.education}}</div>
+    <div class="col-1">
+      <a href="{% url 'delete_job' job.id %}" class="btn btn-sm btn-danger">
+        Delete Post
+      </a>
+    </div>
+    <div class="col-2">
+      <a
+        href="{% url 'recruter_view_requests' job.id %}"
+        class="btn btn-sm btn-info"
+        >View Requests</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">You havent posted any job yet</div>
+{% endif %} {% endblock content %}

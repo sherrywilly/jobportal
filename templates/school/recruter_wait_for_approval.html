@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title></title>
+
+
+  <style media="screen">
+
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+
+
+
+
+
+</head>
+
+<body style="background-image: url('{% static "images/background.jpg" %}');">
+  {% include "school/navbar.html" %}
+  <br>
+  <br>
+
+  <div class="container d-flex justify-content-end text-light" >
+    <div style="background:rgba(12,12,12,0.5);" class="p-3">
+    <h1 class="display-4">Hello {{request.user.first_name}}</h1>
+    <p class="lead">Your Account is not approved till now. <br><br></p>
+    <hr class="my-4">
+    <p>Check Later</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/logout" role="button">Logout For Now</a>
+    </p>
+      </div>
+  </div>
+
+
+</body>
+
+</html>

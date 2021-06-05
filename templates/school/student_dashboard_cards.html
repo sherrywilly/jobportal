@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    a:link {
+      text-decoration: none;
+    }
+
+    .order-card {
+      color: #fff;
+    }
+
+    .bg-c-blue {
+      background: linear-gradient(45deg, #4099ff, #73b4ff);
+    }
+
+    .bg-c-green {
+      background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+    }
+
+    .bg-c-yellow {
+      background: linear-gradient(45deg, #FFB64D, #ffcb80);
+    }
+
+    .bg-c-pink {
+      background: linear-gradient(45deg, #FF5370, #ff869a);
+    }
+
+
+    .card {
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      border: none;
+      margin-bottom: 30px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card .card-block {
+      padding: 25px;
+    }
+
+    .order-card i {
+      font-size: 26px;
+    }
+
+    .f-left {
+      float: left;
+    }
+
+    .f-right {
+      float: right;
+    }
+
+    </style>
+</head>
+
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container p-4">
+
+    <h6 class="m-b-20">Name: <span style="font-size: 20px;">{{request.user.first_name}}</span></h6>
+    <h6 class="m-b-20">Mobile: <span style="font-size: 20px;">{{student.mobile}}</span></h6>
+    <h6 class="m-b-20">Email: <span style="font-size: 20px;">{{student.user.email}}</span></h6>
+    <hr>
+    <h5 class="text-secondary">college informations</h5>
+    <h6 class="m-b-20">University: <span style="font-size: 20px;">{{student.university}}</span></h6>
+    <h6 class="m-b-20">college: <span style="font-size: 20px;">{{student.college}}</span></h6>
+    <h6 class="m-b-20">Education: <span style="font-size: 20px;">{{student.education}}</span></h6>
+    <h6 class="m-b-20">Aggregate: <span style="font-size: 20px;">{{student.college_aggregate}}%</span></h6>
+    <hr>
+    <h5 class="text-secondary">School informations</h5>
+    <h6 class="m-b-20">School name: <span style="font-size: 20px;">{{student.school}}</span></h6>
+    <h6 class="m-b-20">year of passing: <span style="font-size: 20px;">{{student.school_year_of_passing}}</span></h6>
+    <h6 class="m-b-20">Aggregate: <span style="font-size: 20px;">{{student.school_aggregate}}%</span></h6>
+    <hr>
+    <h5 class="text-secondary">HSC informations</h5>
+    <h6 class="m-b-20">HSC name: <span style="font-size: 20px;">{{student.school}}</span></h6>
+    <h6 class="m-b-20">year of passing: <span style="font-size: 20px;">{{student.hsc_year_of_passing}}</span></h6>
+    <h6 class="m-b-20">Aggregate: <span style="font-size: 20px;">{{student.hsc_aggregate}}%</span></h6>
+
+
+</div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+
+</html>

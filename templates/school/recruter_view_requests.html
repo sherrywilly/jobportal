@@ -1,0 +1,67 @@
+{% extends 'school/teacherbase.html' %} {% load static %} {% block content %}
+
+<head>
+  <style media="screen">
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .w3-panel p {
+      padding-top: 10px;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+</head>
+<br />
+
+{%include 'school/recruter_dashboard_cards.html'%}
+
+<br /><br />
+{% for message in messages %}
+<div class="alert alert-success">{{message}}</div>
+{% endfor %}
+<div class="w3-panel w3-blue">
+  <p>Requests for {{job.title}}</p>
+</div>
+<br />
+{% if job_requests %}
+<div class="container pl-5">
+  <div class="row text-success h6">
+    <div class="col-3">Student name</div>
+    <div class="col-3">email</div>
+    <div class="col-3">Action</div>
+  </div>
+  {% for jr in job_requests %}
+  <div class="row mt-1">
+    <div class="col-3">{{jr.student}}</div>
+    <div class="col-3">{{jr.student.email}}</div>
+    <div class="col-3">
+      <a class="btn btn-primary" href="{% url 'sent_mail' jr.student.id %}"
+        >Sent Mail</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">This job doesnt have any requests</div>
+{% endif %} {% endblock content %}

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <style media="screen">
+  html {
+  overflow-y: scroll;
+}
+    .container-fluid {
+         height:90vh;
+     background-image: url('{% static "images/background.jpg" %}');
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+  {% include "school/navbar.html" %}
+  {%block content%}
+
+  {%endblock content%}
+
+</body>
+
+</html>
